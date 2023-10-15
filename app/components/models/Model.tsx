@@ -13,7 +13,7 @@ interface ModelProps{
     actionLabel: string;
     disabled?: boolean;
     secondaryAction?: () => void;
-    secondaryLabel?: string;
+    secondaryActionLabel?: string;
 
 }
 const Model: React.FC<ModelProps> = ({
@@ -26,7 +26,7 @@ const Model: React.FC<ModelProps> = ({
     actionLabel,
     disabled,
     secondaryAction,
-    secondaryLabel
+    secondaryActionLabel
 }) => {
     const [showModel, setShowModel] = useState(isOpen);
 
@@ -166,10 +166,10 @@ const Model: React.FC<ModelProps> = ({
                                         w-full
                                     "
                                 >
-                                    {secondaryAction && secondaryLabel && (
+                                    {secondaryAction && secondaryActionLabel && (
                                         <Button 
                                             disabled = {disabled}
-                                            label={secondaryLabel}
+                                            label={secondaryActionLabel}
                                             onClick={handleSecondaryAction}
                                         />  
                                     )}

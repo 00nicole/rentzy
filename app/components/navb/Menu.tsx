@@ -8,6 +8,7 @@ import useLoginModel from '@/app/hooks/useLoginModel';
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import useRentModel from "@/app/hooks/newRentModel";
+import {useRouter} from "next/navigation";
 
 interface MenuProps{
     currentUser?: SafeUser | null
@@ -16,6 +17,7 @@ interface MenuProps{
 const Menu: React.FC<MenuProps> = ({
     currentUser
 }) => {
+    const router = useRouter();
     const registerModel = useRegisterModel();
     const loginModel = useLoginModel();
     const rentModel = useRentModel();
@@ -98,22 +100,30 @@ const Menu: React.FC<MenuProps> = ({
                         {currentUser ?(
                             <>
                             <MenuItems
-                                onClick={() => {}}
+                                onClick={() => router.push("/rentals")}
                                 label="My Rentals"
                             />
                             <MenuItems
-                                onClick={() => {}}
-                                label="My favourites"
+                                onClick={() => router.push("/favourites")}
+                                label="My Favourites"
                             />
                             <MenuItems
-                                onClick={() => {}}
-                                label="My listings"
+                                onClick={() => router.push("/reservations")}
+                                label="My Reservations"
+                            />
+                            <MenuItems
+                                onClick={() => router.push("/items")}
+                                label="My Listings"
                             />
                             <MenuItems
                                 onClick={rentModel.onOpen}
                                 label="Rentzy my items"
                             />
                             <hr/>
+                            <MenuItems
+                                onClick={() => router.push("/edit")}
+                                label="Edit my account"
+                            />
                             <MenuItems
                                 onClick={() => signOut()}
                                 label="Log out"

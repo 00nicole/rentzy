@@ -52,8 +52,7 @@ model Listing{
   imageSrc String
   createdAt DateTime @default(now())
   category String
-  condition String
-  value String
+  locationValue String
   userId String @db.ObjectId
   price Int
 

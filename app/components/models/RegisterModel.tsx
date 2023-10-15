@@ -35,16 +35,16 @@ const RegisterModel = () => {
             email: '',
             password: ''
           },
-    });
+    }); 
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
     
         axios.post('/api/register', data)
         .then(() => {
-          //toast.success('Registered!');
+          toast.success('Account created!');
           registerModel.onClose();
-          //loginModel.onOpen();
+          loginModel.onOpen();
         })
         .catch((error) => {
           toast.error('Something went wrong');
